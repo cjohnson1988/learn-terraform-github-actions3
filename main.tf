@@ -5,13 +5,15 @@
 
 
 provider "aws" {
-  region = "eu-west-1"
+  region = "us-east-1"
 }
 
 terraform {
 
   cloud {
-    organization = "FlemingFriday"
+
+    organization = "Class6_01"
+
 
     workspaces {
       name = "learn-terraform-github-actions"
@@ -38,10 +40,17 @@ resource "aws_vpc" "app1" {
   }
 }
 
+
+resource "aws_instance" "web" {
+  ami                    = "ami-0e2c8caa4b6378d8c"
+  instance_type          = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.web-sg.id]
+=======
 resource "aws_security_group" "app1-sg01-servers" {
   name        = "app1-sg01-servers"
   description = "app1-sg01-servers"
   vpc_id      = aws_vpc.app1.id
+
 
   ingress {
     description = "MyHomePage"
