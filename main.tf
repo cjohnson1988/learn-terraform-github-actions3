@@ -47,6 +47,7 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = [aws_security_group.web-sg.id]
 }
 
+
 resource "aws_security_group" "app1-sg01-servers" {
   name        = "app1-sg01-servers"
   description = "app1-sg01-servers"
